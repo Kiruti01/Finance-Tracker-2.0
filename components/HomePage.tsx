@@ -8,7 +8,7 @@ const HomePage = () => {
   return (
     <div className="flex flex-col items-center bg-clip-text gap-4">
       <div className="mt-16 bg-gradient-to-r sm:text-[24px] text-[30px] font-extrabold uppercase leading-[24.2px] tracking-widest md:text-[26px] md:leading-[30px] lg:leading-[36px] bg-clip-text text-transparent from-[#3DBFF5] to-[#6F42C1] lg:text-[32px]">
-        CHECK RETURNS
+        Track Smart 2.0
       </div>
       <h1 className="text-gray-900 text-[28px] font-extrabold leading-[34px] tracking-tight md:text-[40px] md:leading-[48px] lg:text-5xl lg:leading-[55px] w-full max-w-[740px] !whitespace-pre-line text-center mt-8">
         <div className="flex items-center justify-center">
