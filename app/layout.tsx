@@ -25,7 +25,7 @@ export default function RootLayout({
       <Providers>
         <html lang="en">
           <body
-            className={cn(font.className, " bg-slate-300/60 dark:bg-[#081632]")}
+            className={cn(font.className, " bg-white/60 dark:bg-[#081632]")}
           >
             <ThemeProvider
               attribute="class"

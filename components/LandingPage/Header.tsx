@@ -2,6 +2,7 @@ import Link from "next/link";
 import React from "react";
 import { auth, UserButton } from "@clerk/nextjs";
 import { ModeToggle } from "../mode-toggle";
+import { Button } from "../ui/button";
 
 const Header = () => {
   const { userId } = auth();
@@ -36,11 +37,10 @@ const Header = () => {
             </>
           )}
           {userId && (
-            <Link
-              href="profile"
-              className="text-gray-300 hover:text-white mr-4"
-            >
-              Profile
+            <Link href="/profile">
+              <Button className=" bg-[#1D4ED8] w-[4rem] text-gray-300 hover:text-black hover:bg-white/80 dark:hover:bg-[#081632] mr-4">
+                Profile
+              </Button>
             </Link>
           )}
           <div className="ml-auto">
