@@ -2,7 +2,7 @@
 import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import WavyText from "./landingPageTools/WavyText";
+import WavyText from "../landingPageTools/WavyText";
 
 const HomePage = () => {
   return (
@@ -50,10 +50,8 @@ const HomePage = () => {
         />
       </motion.div>
       <div className="w-full bg-[#01669E] sm:h-[120px] h-fit py-4 flex items-center justify-around sm:flex-row flex-col">
-        <div className="text-white text-[25px] font-bold py-2">
-          Nifty <span className="italic">50</span>
-        </div>
-        <div className="text-white text-[25px] font-bold py-2">Sensex</div>
+        <div className="text-white text-[25px] font-bold py-2">Assets</div>
+        <div className="text-white text-[25px] font-bold py-2">Investments</div>
         <div className="text-white text-[25px] font-bold py-2">Gold Price</div>
         <div className="text-white text-[25px] font-bold italic py-2">
           Currency Exchange
