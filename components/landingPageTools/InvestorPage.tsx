@@ -36,7 +36,7 @@ const InvestorPage = () => {
         <div className="md:w-1/2 flex justify-center items-center w-full my-4">
           <div className="flex md:flex-col flex-row overflow-scroll">
             <div
-              className={`md:w-[250px] w-fit text-[17px] text-[#29373D] px-4 m-4 py-3 rounded-2xl font-semibold border-2 flex items-center space-x-2 h-[68px] transform transition duration-[2000] ease-linear cursor-pointer hover:bg-gray-200 ${
+              className={`md:w-[250px] w-fit text-[17px] text-[#29373D] dark:text-[#6d6d6d] px-4 m-4 py-3 rounded-2xl font-semibold border-2 flex items-center space-x-2 h-[68px] transform transition duration-[2000] ease-linear cursor-pointer hover:bg-gray-200 ${
                 Index === 1 &&
                 "bg-gradient-to-r from-[#f1efef] to-[#c6e4ee]  border-[#FF0078] "
               }`}
@@ -47,7 +47,7 @@ const InvestorPage = () => {
             </div>
 
             <div
-              className={`md:w-[250px] w-fit text-[17px] text-[#29373D] px-4 m-4 py-3 rounded-2xl font-semibold border-2 flex items-center space-x-2 h-[68px] transform transition duration-[2000] ease-linear cursor-pointer hover:bg-gray-200 ${
+              className={`md:w-[250px] w-fit text-[17px] text-[#29373D] dark:text-[#6d6d6d] px-4 m-4 py-3 rounded-2xl font-semibold border-2 flex items-center space-x-2 h-[68px] transform transition duration-[2000] ease-linear cursor-pointer hover:bg-gray-200 ${
                 Index === 2 &&
                 "bg-gradient-to-r from-[#f1efef] to-[#c6e4ee]  border-[#FF0078] "
               }`}
@@ -57,7 +57,7 @@ const InvestorPage = () => {
               <div>Accurate Calculations</div>
             </div>
             <div
-              className={`md:w-[250px] w-fit text-[17px] text-[#29373D] px-4 m-4 py-3 rounded-2xl font-semibold border-2 flex items-center space-x-2 h-[68px] transform transition duration-[2000] ease-linear cursor-pointer hover:bg-gray-200 ${
+              className={`md:w-[250px] w-fit text-[17px] text-[#29373D] dark:text-[#6d6d6d] px-4 m-4 py-3 rounded-2xl font-semibold border-2 flex items-center space-x-2 h-[68px] transform transition duration-[2000] ease-linear cursor-pointer hover:bg-gray-200 ${
                 Index === 3 &&
                 "bg-gradient-to-r from-[#f1efef] to-[#c6e4ee]  border-[#FF0078] "
               }`}
@@ -67,7 +67,7 @@ const InvestorPage = () => {
               <div>Dynamic Charts</div>
             </div>
             <div
-              className={`md:w-[250px] text-[17px] text-[#29373D] px-4 m-4 py-3 rounded-2xl font-semibold border-2 flex items-center space-x-2 h-[68px] transform transition duration-[2000] ease-linear cursor-pointer hover:bg-gray-200 ${
+              className={`md:w-[250px] text-[17px] text-[#29373D] dark:text-[#6d6d6d] px-4 m-4 py-3 rounded-2xl font-semibold border-2 flex items-center space-x-2 h-[68px] transform transition duration-[2000] ease-linear cursor-pointer hover:bg-gray-200 ${
                 Index === 4 &&
                 "bg-gradient-to-r from-[#f1efef] to-[#c6e4ee]  border-[#FF0078] "
               }`}

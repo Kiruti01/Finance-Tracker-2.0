@@ -5,8 +5,10 @@ import ToasterProvider from "@/components/ToasterProvider/ToasterProvider";
 import Providers from "@/lib/SessionProvider";
 import { ClerkProvider } from "@clerk/nextjs";
 import Header from "@/components/LandingPage/Header";
+import { ThemeProvider } from "@/components/providers/theme-provider";
+import { cn } from "@/lib/utils";
 
-const inter = Inter({ subsets: ["latin"] });
+const font = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Track Smart 2.0 App",
@@ -22,16 +24,25 @@ export default function RootLayout({
     <ClerkProvider>
       <Providers>
         <html lang="en">
-          <body className={inter.className}>
-            <Header />
-            <main className="container">
-              <div className="flex items-start justify-center min-h-screen">
-                <div>
-                  <ToasterProvider />
-                  {children}
+          <body
+            className={cn(font.className, " bg-slate-300/60 dark:bg-[#081632]")}
+          >
+            <ThemeProvider
+              attribute="class"
+              defaultTheme="light"
+              enableColorScheme={false}
+              storageKey="discord-theme"
+            >
+              <Header />
+              <main className="container">
+                <div className="flex items-start justify-center min-h-screen">
+                  <div>
+                    <ToasterProvider />
+                    {children}
+                  </div>
                 </div>
-              </div>
-            </main>
+              </main>
+            </ThemeProvider>
           </body>
         </html>
       </Providers>

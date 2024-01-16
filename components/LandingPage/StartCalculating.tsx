@@ -11,10 +11,10 @@ const StartCalculating = () => {
       className={`bg-[url("/start_investing_bg.jpg")] h-[350px] bg-center bg-cover mt-16 flex justify-center items-center flex-col ${InterScript.className}`}
     >
       <div className="bg-gradient-to-r text-[20px] font-extrabold uppercase leading-[24.2px] tracking-widest md:text-[26px] md:leading-[30px] lg:leading-[36px] bg-clip-text mb-4 text-[#414141] lg:text-[32px]">
-        CHECK RETURNS
+        TRACK SMART 2.0
       </div>
       <div className=" text-gray-50 sm:text-[28px] text-[20px] font-extrabold leading-[34px] tracking-tight md:text-[40px] md:leading-[48px] lg:text-5xl lg:leading-[55px] mt-4">
-        <div className="typewriter-text">Check your Returns today!</div>
+        <div className="typewriter-text">Check your Stats today!</div>
       </div>
       <div className="flex space-x-2 sm:w-[350px] w-[250px] justify-around mt-10">
         <div

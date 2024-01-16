@@ -6,13 +6,13 @@ import { HiOutlineInformationCircle } from "react-icons/hi";
 const SharePage = () => {
   return (
     <div className="mt-16">
-      <div className="mb-4 px-4 text-center text-[28px] font-extrabold leading-8 text-gray-900 md:text-[40px] md:leading-[48px]">
+      <div className="mb-4 px-4 text-center text-[28px] font-extrabold leading-8 text-gray-900 dark:text-[#e7e5e5] md:text-[40px] md:leading-[48px]">
         Save / Share your{" "}
         <span className="bg-gradient-to-r bg-clip-text text-transparent from-[#E23A3A] to-[#E58A00]">
           Results
         </span>
       </div>
-      <div className="mx-auto max-w-2xl px-4 text-center text-[16px] leading-6 text-gray-900 md:text-[20px] md:leading-8 ">
+      <div className="mx-auto max-w-2xl px-4 text-center text-[16px] leading-6 text-gray-900 dark:text-[#e7e5e5] md:text-[20px] md:leading-8 ">
         Save or share your calculated results for informed financial decisions
       </div>
 
