@@ -187,16 +187,12 @@ const prage = () => {
     <div className={`lg:mx-16 mx-4 my-8 ${InterScript.className}`}>
       <h2 className="flex justify-between sm:flex-row sm:items-center flex-col">
         <div className="bg-clip-text text-transparent bg-gradient-to-r from-[#5A32A3] to-[#D03592] relative sm:text-[40px] text-[30px] font-bold">
-          Fixed Deposit Calculator
+          Expense Calculator
         </div>
         <div className="bg-gray-200 dark:bg-slate-700 px-3 py-1 rounded-xl h-fit font-normal mt-1 w-fit select-none cursor-pointer hover:bg-blue-300 dark:hover:bg-[#3b7ecb] transition duration-500">
           All Calculators
         </div>
       </h2>
-
-      <div className="font-normal relative bottom-2 italic select-none sm:flex hidden">
-        (Scroll to get more information about Fixed Deposit)
-      </div>
 
       <div className="flex mt-6 lg:flex-row flex-col border-b-gray-700">
         <div className="h-[380px] border-[10px] lg:w-[600px] rounded-2xl w-full">
@@ -351,28 +347,6 @@ const prage = () => {
               />
             </div>
           )}
-        </div>
-      </div>
-      <div
-        className={`mt-6 border-[10px] rounded-lg mb-8 h-fit px-8 py-4 select-none  ${JetBrains.className}`}
-      >
-        <div className="font-bold text-[20px] mb-2">
-          Information about Fixed Deposit
-        </div>
-        <div>
-          A Fixed Deposit (FD) is a low-risk investment offered by banks and
-          financial institutions. It comprises depositing a quantity of money at
-          a predetermined interest rate for a defined length of time. FDs
-          provide safety, fixed returns, and government-backed insurance up to a
-          specified amount. They are, however, less liquid, with early
-          withdrawal penalties. Interest is usually taxed, and a minimum deposit
-          is required.
-        </div>
-        <div className="my-4 font-bold">M = P + ((P x r x t)/100)</div>
-        <div>
-          The formula M represents the total amount you'll have in the end,
-          where: P is the initial deposit amount. r is the annual interest rate.
-          t is the number of years the money is deposited or invested.
         </div>
       </div>
     </div>

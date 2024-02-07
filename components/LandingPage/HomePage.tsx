@@ -2,7 +2,7 @@
 import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import WavyText from "../landingPageTools/WavyText";
+// import WavyText from "../landingPageTools/WavyText";
 
 const HomePage = () => {
   return (
@@ -10,8 +10,8 @@ const HomePage = () => {
       <div className="mt-16 bg-gradient-to-r sm:text-[24px] text-[30px] font-extrabold uppercase leading-[24.2px] tracking-widest md:text-[26px] md:leading-[30px] lg:leading-[36px] bg-clip-text text-transparent from-[#3DBFF5] to-[#6F42C1] lg:text-[32px]">
         Track Smart 2.0
       </div>
-      <h1 className="text-gray-900 dark:text-[#a9a9a9] text-[28px] font-extrabold leading-[34px] tracking-tight md:text-[40px] md:leading-[48px] lg:text-5xl lg:leading-[55px] w-full max-w-[740px] !whitespace-pre-line text-center mt-8">
-        <div className="flex items-center justify-center">
+      {/* <h1 className="text-gray-900 dark:text-[#a9a9a9] text-[28px] font-extrabold leading-[34px] tracking-tight md:text-[40px] md:leading-[48px] lg:text-5xl lg:leading-[55px] w-full max-w-[740px] !whitespace-pre-line text-center mt-8"> */}
+      {/* <div className="flex items-center justify-center">
           Maximizing
           <span className="bg-gradient-to-r bg-clip-text text-transparent ml-2 from-[#8A63D2] to-[#E23A3A]">
             <WavyText text="Returns," replay={true} />
@@ -22,13 +22,12 @@ const HomePage = () => {
           <span className="bg-gradient-to-r bg-clip-text text-transparent ml-2 from-[#8A63D2] to-[#E23A3A] ">
             <WavyText text="Efforts" replay={true} />
           </span>
-        </div>
-      </h1>
+        </div> */}
+      {/* </h1> */}
 
       <div className="text-gray-800 dark:text-[#d1d1d1] max-w-[740px] text-[16px] leading-[22px] md:text-[19px] md:leading-[26px] lg:text-[24px] lg:leading-[36px] md:font-medium text-center mt-4 px-8">
-        Maximizing financial returns with minimal input, our investment
-        calculator streamlines the process, helping you make informed investment
-        decisions effortlessly
+        Empowering Your Financial Journey with Seamless Tracking and Intelligent
+        Insights.
       </div>
 
       <motion.div
@@ -49,6 +48,7 @@ const HomePage = () => {
           alt="homePage.png"
         />
       </motion.div>
+
       <div className="w-full bg-blue-700  sm:h-[120px] h-fit py-4 flex items-center justify-around sm:flex-row flex-col">
         <div className="text-white text-[25px] font-bold py-2">Assets</div>
         <div className="text-white text-[25px] font-bold py-2">Investments</div>
