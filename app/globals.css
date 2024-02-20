@@ -3,6 +3,20 @@
 @tailwind utilities;
  
 @layer base {
+  .avatar {
+    width: 36px;
+    height: 36px;
+    background-color: #121846;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+  }
+}
+@layer base {
   :root {
     --background: 0 0% 100%;
     --foreground: 20 14.3% 4.1%;

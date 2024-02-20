@@ -1,122 +1,62 @@
 "use client";
-import React, { useState, useEffect } from "react";
-// import axios from "axios";
-import { Inter, JetBrains_Mono } from "next/font/google";
-import FDChart from "@/components/Charts/ChartFD/FDChart";
-import CalculatorCard from "@/components/Calculator/CalculatorCard";
+import React, { useEffect, useRef, useState } from "react";
+import { Inter } from "next/font/google";
 import { GrSettingsOption } from "react-icons/gr";
+import { JetBrains_Mono } from "next/font/google";
+import axios from "axios";
+import toast from "react-hot-toast";
+import FDChart from "@/components/Charts/ChartFD/FDPieChart";
 import TextInput from "@/components/TextInput";
 import FDScatter from "@/components/Charts/ChartFD/FDScatter";
 import FDLine from "@/components/Charts/ChartFD/FDLine";
 import FDBubble from "@/components/Charts/ChartFD/FDBubble";
-import axios from "axios";
-import toast from "react-hot-toast";
-// import CalculatorCard from "@/components/Calculator/CalculatorCard";
-const JetBrains = JetBrains_Mono({ subsets: ["latin"] });
+
 const InterScript = Inter({ subsets: ["latin"] });
+const JetBrains = JetBrains_Mono({ subsets: ["latin"] });
 
-// interface Calculator {
-//   calculatorName: string;
-//   calculatorDescription: string;
-//   calculatorLink: string;
-//   visible: boolean;
-// }
-
-// const Page: React.FC = () => {
-//   const [query, setQuery] = useState<string>("");
-//   const [searchResults, setSearchResults] = useState<Calculator[]>([]);
-//   const debounceDelay = 300;
-
-//   useEffect(() => {
-//     let debounceTimer: NodeJS.Timeout;
-
-//     const handleSearch = async () => {
-//       try {
-//         const response = await axios.get(`/api/search?query=${query}`);
-//         const searchResultsWithVisibility = response.data.data.map(
-//           (calculator: Calculator) => ({
-//             ...calculator,
-//             visible: calculator.calculatorName
-//               .toLowerCase()
-//               .includes(query.toLowerCase()),
-//           })
-//         );
-//         setSearchResults(searchResultsWithVisibility);
-//       } catch (error) {
-//         console.error("Error while searching:", error);
-//       }
-//     };
-
-//     const delayedSearch = () => {
-//       if (debounceTimer) {
-//         clearTimeout(debounceTimer);
-//       }
-
-//       debounceTimer = setTimeout(handleSearch, debounceDelay);
-//     };
-
-//     delayedSearch();
-
-//     return () => {
-//       if (debounceTimer) {
-//         clearTimeout(debounceTimer);
-//       }
-//     };
-//   }, [query]);
-
-//   return (
-//     <div>
-//       <div className={`mx-16 text-center text-[35px] my-4 font-semibold `}>
-//         All Calculators
-//       </div>
-//       <div className="flex justify-center items-center">
-//         <input
-//           type="text"
-//           placeholder={`Search by name`}
-//           value={query}
-//           onChange={(e) => setQuery(e.target.value)}
-//           className="border-2 px-4 py-2 rounded-lg mr-2 text-center"
-//         />
-//       </div>
-//       <div className="flex flex-wrap justify-center">
-//         {searchResults
-//           .filter((calculator) => calculator.visible)
-//           .map((calculator) => (
-//             <div key={calculator.calculatorName}>
-//               <CalculatorCard calculatorDetails={calculator} />
-//             </div>
-//           ))}
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default Page;
-
-const Page = () => {
+const FixedDepositCalculator = () => {
   const [investment, setInvestment] = useState<string>("10000");
   const [rateOfInterest, setRateOfInterest] = useState<string>("5.7");
   const [timePeriod, setTimePeriod] = useState<string>("4");
-
   const [clearedInvestment, setClearedInvestment] = useState<boolean>(false);
   const [clearedRateOfInterest, setClearedRateOfInterest] =
     useState<boolean>(false);
   const [clearedTimePeriod, setClearedTimePeriod] = useState<boolean>(false);
-
   const [active, setActive] = useState<string>("Scatter");
   const [showSettings, setShowSettings] = useState(false);
   const [timeUnit, setTimeUnit] = useState("years");
+  const settingsPanelRef = useRef(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        settingsPanelRef.current &&
+        !(settingsPanelRef.current as Node).contains(event.target as Node)
+      ) {
+        setShowSettings(false);
+      }
+    };
+
+    if (showSettings) {
+      document.addEventListener("click", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+    };
+  }, [showSettings]);
 
   const toggleSettingsPanel = () => {
     setShowSettings(!showSettings);
   };
 
-  // const settingsPanelRef = useRef(null);
+  const handleTimeUnitChange = (selectedTimeUnit: string) => {
+    setTimeUnit(selectedTimeUnit);
+  };
 
   const calculateReturns = () => {
     const principle = parseFloat(investment);
     const interestRate = parseFloat(rateOfInterest) / 100;
-
     let years = parseFloat(timePeriod);
 
     if (timeUnit === "months") {
@@ -152,7 +92,9 @@ const Page = () => {
       <div className="md:h-[380px] h-fit border-[10px] lg:ml-8 mt-8 lg:mt-0 rounded-lg p-4 w-full flex justify-between items-center flex-col md:flex-row">
         <div className="flex flex-col justify-between h-full md:w-1/2 w-full p-4 md:mr-16">
           <div className="w-full">
-            <h4 className="font-bold text-3xl">Summary</h4>
+            <h4 className={`font-bold text-3xl ${InterScript.className}`}>
+              Summary
+            </h4>
             <div className="flex flex-col mt-4 text-[17px] font-normal">
               <div className="flex space-x-4 justify-between">
                 <div>Investment Amount</div>
@@ -175,7 +117,7 @@ const Page = () => {
               <div>Returns</div>
               <div>KES{returns.toFixed(2)}</div>
             </div>
-            <div className="flex space-x-4 justify-between ">
+            <div className="flex space-x-4 justify-between  gap-4 ">
               <div>Total Value</div>
               <div>KES{totalValue.toFixed(2)}</div>
             </div>
@@ -201,6 +143,7 @@ const Page = () => {
       </div>
     );
   };
+
   const handleInvestmentChange = (value: string) => {
     if (!isNaN(parseFloat(value)) && parseFloat(value) >= 0) {
       setInvestment(value);
@@ -241,12 +184,17 @@ const Page = () => {
     <div className={`lg:mx-16 mx-4 my-8 ${InterScript.className}`}>
       <h2 className="flex justify-between sm:flex-row sm:items-center flex-col">
         <div className="bg-clip-text text-transparent bg-gradient-to-r from-[#5A32A3] to-[#D03592] relative sm:text-[40px] text-[30px] font-bold">
-          Calculator
+          Fixed Deposit Calculator
         </div>
         <div className="bg-gray-200 px-3 py-1 rounded-xl h-fit font-normal mt-1 w-fit select-none cursor-pointer hover:bg-gray-400 transition duration-500">
           All Calculators
         </div>
       </h2>
+
+      <div className="font-normal relative bottom-2 italic select-none sm:flex hidden">
+        (Scroll to get more information about Fixed Deposit)
+      </div>
+
       <div className="flex mt-6 lg:flex-row flex-col">
         <div className="h-[380px] border-[10px] lg:w-[600px] rounded-2xl w-full">
           <div className="p-3 flex justify-between items-center">
@@ -259,12 +207,58 @@ const Page = () => {
               </div>
               <div>Settings</div>
             </div>
+
+            <div className="">
+              {showSettings && (
+                <div
+                  ref={settingsPanelRef}
+                  className="absolute sm:left-[85px] left-[30px] transition duration-1000 bg-white z-50 mt-4 border-2 p-4 rounded-lg"
+                >
+                  <div className="mb-4">
+                    <label className="block text-[16px] font-semibold mb-2">
+                      Time Period
+                    </label>
+                    <div className="flex space-x-4">
+                      <label className="inline-flex items-center">
+                        <input
+                          type="radio"
+                          value="years"
+                          checked={timeUnit === "years"}
+                          onChange={() => handleTimeUnitChange("years")}
+                        />
+                        <span className="ml-2">Years</span>
+                      </label>
+                      <label className="inline-flex items-center">
+                        <input
+                          type="radio"
+                          value="months"
+                          checked={timeUnit === "months"}
+                          onChange={() => handleTimeUnitChange("months")}
+                        />
+                        <span className="ml-2">Months</span>
+                      </label>
+                      <label className="inline-flex items-center">
+                        <input
+                          type="radio"
+                          value="days"
+                          checked={timeUnit === "days"}
+                          onChange={() => handleTimeUnitChange("days")}
+                        />
+                        <span className="ml-2">Days</span>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
+
             <div className="flex space-x-2">
               <div className="w-[12px] h-[12px] bg-red-400 rounded-full hover:bg-red-600 cursor-pointer"></div>
               <div className="w-[12px] h-[12px] bg-yellow-300 rounded-full hover:bg-yellow-600 cursor-pointer"></div>
               <div className="w-[12px] h-[12px] bg-green-500 rounded-full hover:bg-green-600 cursor-pointer"></div>
             </div>
           </div>
+
           <div className="px-4 py-2 mb-4">
             <TextInput
               id="investment"
@@ -288,7 +282,7 @@ const Page = () => {
             />
           </div>
         </div>
-        <div>{calculateReturns()}</div>
+        {calculateReturns()}
       </div>
       <div className="mt-6 border-[10px] rounded-lg mb-8 h-fit px-2 sm:px-8 py-4 select-none">
         <div className="flex space-x-3 items-center justify-center mt-2 mb-4 text-[14px]">
@@ -356,7 +350,30 @@ const Page = () => {
           )}
         </div>
       </div>
+      <div
+        className={`mt-6 border-[10px] rounded-lg mb-8 h-fit px-8 py-4 select-none ${JetBrains.className}`}
+      >
+        <div className="font-bold text-[20px] mb-2">
+          Information about Fixed Deposit
+        </div>
+        <div>
+          A Fixed Deposit (FD) is a low-risk investment offered by banks and
+          financial institutions. It comprises depositing a quantity of money at
+          a predetermined interest rate for a defined length of time. FDs
+          provide safety, fixed returns, and government-backed insurance up to a
+          specified amount. They are, however, less liquid, with early
+          withdrawal penalties. Interest is usually taxed, and a minimum deposit
+          is required.
+        </div>
+        <div className="my-4 font-bold">M = P + ((P x r x t)/100)</div>
+        <div>
+          The formula M represents the total amount you'll have in the end,
+          where: P is the initial deposit amount. r is the annual interest rate.
+          t is the number of years the money is deposited or invested.
+        </div>
+      </div>
     </div>
   );
 };
-export default Page;
+
+export default FixedDepositCalculator;

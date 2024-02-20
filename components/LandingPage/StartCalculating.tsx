@@ -23,16 +23,16 @@ const StartCalculating = () => {
             router.push("/calculator");
           }}
         >
-          Calculator
+          Finance Calculator
         </div>
-        <div
+        {/* <div
           className="w-[150px] text-center bg-[#29abe2] rounded-lg px-4 py-2 text-[16px] font-semibold text-white select-none"
           onClick={() => {
             router.push("/login");
           }}
         >
           Login
-        </div>
+        </div> */}
       </div>
     </div>
   );

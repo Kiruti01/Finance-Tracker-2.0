@@ -3,7 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import ToasterProvider from "@/components/ToasterProvider/ToasterProvider";
 import Providers from "@/lib/SessionProvider";
-import { ClerkProvider } from "@clerk/nextjs";
+// import { ClerkProvider } from "@clerk/nextjs";
 import Header from "@/components/LandingPage/Header";
 import { ThemeProvider } from "@/components/providers/theme-provider";
 import { cn } from "@/lib/utils";
@@ -21,31 +21,27 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <ClerkProvider>
-      <Providers>
-        <html lang="en">
-          <body
-            className={cn(font.className, " bg-white/60 dark:bg-[#081632]")}
+    <Providers>
+      <html lang="en">
+        <body className={cn(font.className, " bg-white/60 dark:bg-[#081632]")}>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="light"
+            enableColorScheme={false}
+            storageKey="discord-theme"
           >
-            <ThemeProvider
-              attribute="class"
-              defaultTheme="light"
-              enableColorScheme={false}
-              storageKey="discord-theme"
-            >
-              <Header />
-              <main className="container">
-                <div className="flex items-start justify-center min-h-screen">
-                  <div>
-                    <ToasterProvider />
-                    {children}
-                  </div>
+            <Header />
+            <main className="container">
+              <div className="flex items-start justify-center min-h-screen">
+                <div>
+                  <ToasterProvider />
+                  {children}
                 </div>
-              </main>
-            </ThemeProvider>
-          </body>
-        </html>
-      </Providers>
-    </ClerkProvider>
+              </div>
+            </main>
+          </ThemeProvider>
+        </body>
+      </html>
+    </Providers>
   );
 }

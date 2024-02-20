@@ -27,6 +27,9 @@ const Footer = () => {
             <li>
               <Link href="/profile">Profile</Link>
             </li>
+            <li>
+              <Link href="/privacy">Privacy Policy</Link>
+            </li>
           </ul>
         </div>
 

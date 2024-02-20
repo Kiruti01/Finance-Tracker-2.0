@@ -14,8 +14,8 @@ model User {
   id             String           @id @default(auto()) @map("_id") @db.ObjectId
   name           String?
   image          String?
-  email          String?
-  isAdmin        Boolean?
+  email          String?          @unique
+  isAdmin        Boolean?         @default(false)
   emailVerified  Boolean?
   password       String?
   historicalData HistoricalData[]
@@ -25,6 +25,8 @@ model User {
   updatedAt DateTime  @updatedAt
   accounts  Account[]
   sessions  Session[]
+  expenses  Expense[]
+  incomes   Income[]
 }
 
 model Account {
@@ -101,4 +103,34 @@ model Item {
   method     String
   categoryId String   @db.ObjectId
   category   Category @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+}
+
+model Expense {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  title       String
+  amount      Float
+  type        String   @default("expense")
+  category    String
+  description String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId      String   @db.ObjectId
+
+  @@map("expenses")
+}
+
+model Income {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  title       String
+  amount      Float
+  type        String   @default("income")
+  category    String
+  description String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId      String   @db.ObjectId
+
+  @@map("incomes")
 }

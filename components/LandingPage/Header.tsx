@@ -1,11 +1,36 @@
-import Link from "next/link";
+"use client";
+
 import React from "react";
-import { auth, UserButton } from "@clerk/nextjs";
+import Link from "next/link";
 import { ModeToggle } from "../mode-toggle";
-import { Button } from "../ui/button";
+import { signOut, useSession } from "next-auth/react";
 
 const Header = () => {
-  const { userId } = auth();
+  const { data: session } = useSession(); // Get the user's session
+
+  const handleLogout = async () => {
+    const response = await signOut({ redirect: false });
+    if (response.url) {
+      window.location.replace(response.url);
+    } else {
+      console.error("Logout failed");
+    }
+  };
+
+  const renderInitials = () => {
+    if (session && session.user?.email) {
+      // Extract initials from email
+      const initials = session.user.email
+        .split("@")[0]
+        .split(".")
+        .map((part) => part.charAt(0))
+        .join("")
+        .toUpperCase();
+
+      return <div className="avatar">{initials}</div>;
+    }
+    return null;
+  };
 
   return (
     <>
@@ -19,7 +44,18 @@ const Header = () => {
           </Link>
         </div>
         <div className="text-white flex items-center">
-          {!userId && (
+          {session && (
+            <div className="flex items-center mr-4">
+              <Link href="/profile">{renderInitials()}</Link>
+              <button
+                onClick={handleLogout}
+                className="text-gray-300 hover:text-white ml-2"
+              >
+                Logout
+              </button>
+            </div>
+          )}
+          {!session && (
             <>
               <Link
                 href="login"
@@ -29,23 +65,14 @@ const Header = () => {
               </Link>
               <span className="px-6">||</span>
               <Link
-                href="sign-up"
+                href="register"
                 className="text-gray-300 hover:text-white mr-4"
               >
                 Sign Up
               </Link>
             </>
           )}
-          {userId && (
-            <Link href="/profile">
-              <Button className=" bg-[#1D4ED8] w-[4rem] text-gray-300 hover:text-black hover:bg-white/80 dark:hover:bg-[#081632] mr-4">
-                Profile
-              </Button>
-            </Link>
-          )}
-          <div className="ml-auto">
-            <UserButton afterSignOutUrl="/" />
-          </div>
+          <div className="ml-auto">{/* Additional components */}</div>
         </div>
       </nav>
     </>
