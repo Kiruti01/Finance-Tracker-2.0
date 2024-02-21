@@ -1,3 +1,4 @@
+"use client";
 import AddCategory from "@/components/MyFinanceComponents/AddCategory";
 import Items from "@/components/MyFinanceComponents/Items";
 import getCategories from "@/lib/getCategories";
