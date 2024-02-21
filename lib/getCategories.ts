@@ -2,26 +2,26 @@ import { NextResponse } from "next/server";
 import { db as prisma } from "./db";
 import getCurrentUser from "./getCurrentUser";
 
-
 export default async function getCategories() {
-    const user = await getCurrentUser()
+  const user = await getCurrentUser();
 
-    if (!user) {
-        return NextResponse.error();
-    }
+  if (!user) {
+    return NextResponse.error();
+  }
 
-    try {
-        const res = await prisma.category.findMany({
-            where: {
-                userId: user.id
-            },
-            include: {
-                items: true
-            }
-        });
+  try {
+    const res = await prisma.category.findMany({
+      where: {
+        userId: user.id,
+      },
+      include: {
+        items: true,
+      },
+    });
 
-        return res;
-    } catch (error) {
-        NextResponse.error();
-    }
+    return res;
+  } catch (error) {
+    console.error("Error in getCategories:", error);
+    return NextResponse.error();
+  }
 }

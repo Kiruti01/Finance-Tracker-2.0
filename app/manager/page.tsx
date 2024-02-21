@@ -1,10 +1,11 @@
-// Myfinances.tsx
+// /manager/page
 import AddCategory from "@/components/MyFinanceComponents/AddCategory";
 import Items from "@/components/MyFinanceComponents/Items";
 import getCategories from "@/lib/getCategories";
 
-const Myfinances = async () => {
+const Page = async () => {
   const categories = await getCategories();
+
   if (Array.isArray(categories)) {
     if (categories.length === 0) {
       return (
@@ -17,7 +18,12 @@ const Myfinances = async () => {
       );
     }
   }
-  return <Items categories={categories} />;
+
+  return (
+    <div className="container mx-auto mt-6 ">
+      <Items categories={categories} />
+    </div>
+  );
 };
 
-export default Myfinances;
+export default Page;
