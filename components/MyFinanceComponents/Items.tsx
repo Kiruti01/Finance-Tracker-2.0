@@ -68,7 +68,7 @@ const Items = ({ categories }: Card) => {
         </div>
       </div>
 
-      {use === "Transactions" && categories && categories.length > 0 && (
+      {use === "Transactions" && categories && (
         <div className="overflow-x-scroll example">
           <div>
             {Array.isArray(categories) && (
