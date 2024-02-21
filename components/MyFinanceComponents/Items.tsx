@@ -4,24 +4,21 @@ import AddCategory from "./AddCategory";
 import ExpenseCard from "./ExpenseCard";
 import MFPieChart from "./Charts/MFPieChart";
 
+interface ApiResponse {
+  items: {
+    id: string;
+    name: string;
+    price: number;
+    method: string;
+    categoryId: string;
+  }[];
+  id: string;
+  name: string;
+  TotalAmount: number;
+  userId: string;
+}
 interface Card {
-  categories:
-    | Response
-    | ({
-        items: {
-          id: string;
-          name: string;
-          price: number;
-          method: string;
-          categoryId: string;
-        }[];
-      } & {
-        id: string;
-        name: string;
-        TotalAmount: number;
-        userId: string;
-      })[]
-    | undefined;
+  categories: ApiResponse[] | undefined;
 }
 
 const Items = ({ categories }: Card) => {
@@ -68,7 +65,7 @@ const Items = ({ categories }: Card) => {
         </div>
       </div>
 
-      {use === "Transactions" && categories && (
+      {use === "Transactions" && categories && categories.length > 0 && (
         <div className="overflow-x-scroll example">
           <div>
             {Array.isArray(categories) && (

@@ -1,12 +1,28 @@
+import React from "react";
 import AddCategory from "@/components/MyFinanceComponents/AddCategory";
 import Items from "@/components/MyFinanceComponents/Items";
 import getCategories from "@/lib/getCategories";
 
-const Page = async () => {
-  const categories = await getCategories();
+interface ApiResponse {
+  items: {
+    id: string;
+    name: string;
+    price: number;
+    method: string;
+    categoryId: string;
+  }[];
+  id: string;
+  name: string;
+  TotalAmount: number;
+  userId: string;
+}
 
-  if (Array.isArray(categories)) {
-    if (categories.length === 0) {
+const Page = async () => {
+  // Fetch categories data
+  const categoriesData: ApiResponse[] = await getCategories();
+
+  if (Array.isArray(categoriesData)) {
+    if (categoriesData.length === 0) {
       return (
         <div>
           No categories found
@@ -20,7 +36,7 @@ const Page = async () => {
 
   return (
     <div className="container mx-auto mt-6 ">
-      <Items categories={categories} />
+      <Items categories={categoriesData} />
     </div>
   );
 };
