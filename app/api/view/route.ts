@@ -23,7 +23,7 @@ export async function POST(request: Request) {
       data: itemData,
     });
 
-    const category = await prisma.category.findUnique({
+    const category = await prisma.category.findFirst({
       where: {
         id: cardNumber,
       },
