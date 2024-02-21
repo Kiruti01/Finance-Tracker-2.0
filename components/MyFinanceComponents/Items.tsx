@@ -4,21 +4,24 @@ import AddCategory from "./AddCategory";
 import ExpenseCard from "./ExpenseCard";
 import MFPieChart from "./Charts/MFPieChart";
 
-interface ApiResponse {
-  items: {
-    id: string;
-    name: string;
-    price: number;
-    method: string;
-    categoryId: string;
-  }[];
-  id: string;
-  name: string;
-  TotalAmount: number;
-  userId: string;
-}
 interface Card {
-  categories: ApiResponse[] | undefined;
+  categories:
+    | Response
+    | ({
+        items: {
+          id: string;
+          name: string;
+          price: number;
+          method: string;
+          categoryId: string;
+        }[];
+      } & {
+        id: string;
+        name: string;
+        TotalAmount: number;
+        userId: string;
+      })[]
+    | undefined;
 }
 
 const Items = ({ categories }: Card) => {
