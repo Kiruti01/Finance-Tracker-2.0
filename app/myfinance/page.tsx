@@ -2,7 +2,7 @@
 import Items from "@/components/MyFinanceComponents/Items";
 import getCategories from "@/lib/getCategories";
 
-const Page = async () => {
+const Myfinances = async () => {
   const categories = await getCategories();
 
   //   if (Array.isArray(categories)) {
@@ -25,4 +25,4 @@ const Page = async () => {
   );
 };
 
-export default Page;
+export default Myfinances;
