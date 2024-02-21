@@ -1,12 +1,8 @@
-import Manager from "@/components/manager/manager";
+// import Manager from "@/components/manager/manager";
 import React from "react";
 
 function Page() {
-  return (
-    <div>
-      <Manager />
-    </div>
-  );
+  return <div>{/* <Manager /> */}</div>;
 }
 
 export default Page;
