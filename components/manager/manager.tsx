@@ -1,8 +1,8 @@
 import AddCategory from "@/components/MyFinanceComponents/AddCategory";
-// import Items from "@/components/MyFinanceComponents/Items";
+import Items from "@/components/MyFinanceComponents/Items";
 import getCategories from "@/lib/getCategories";
 
-const Manager = async () => {
+const Page = async () => {
   const categories = await getCategories();
 
   if (Array.isArray(categories)) {
@@ -18,11 +18,11 @@ const Manager = async () => {
     }
   }
 
-  // return (
-  //   <div className="container mx-auto mt-6 ">
-  //     <Items categories={categories} />
-  //   </div>
-  // );
+  return (
+    <div className="container mx-auto mt-6 ">
+      <Items categories={categories} />
+    </div>
+  );
 };
 
-export default Manager;
+export default Page;
