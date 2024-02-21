@@ -20,7 +20,6 @@ interface Transaction {
   updatedAt: Date;
 }
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 interface Categories {
   id: string;
   name: string;
