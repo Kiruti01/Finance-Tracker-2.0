@@ -10,6 +10,7 @@ import TextInput from "@/components/TextInput";
 import FDScatter from "@/components/Charts/ChartFD/FDScatter";
 import FDLine from "@/components/Charts/ChartFD/FDLine";
 import FDBubble from "@/components/Charts/ChartFD/FDBubble";
+import AddCategory from "@/components/MyFinanceComponents/AddCategory";
 
 const InterScript = Inter({ subsets: ["latin"] });
 const JetBrains = JetBrains_Mono({ subsets: ["latin"] });
@@ -353,23 +354,8 @@ const FixedDepositCalculator = () => {
       <div
         className={`mt-6 border-[10px] rounded-lg mb-8 h-fit px-8 py-4 select-none ${JetBrains.className}`}
       >
-        <div className="font-bold text-[20px] mb-2">
-          Information about Fixed Deposit
-        </div>
         <div>
-          A Fixed Deposit (FD) is a low-risk investment offered by banks and
-          financial institutions. It comprises depositing a quantity of money at
-          a predetermined interest rate for a defined length of time. FDs
-          provide safety, fixed returns, and government-backed insurance up to a
-          specified amount. They are, however, less liquid, with early
-          withdrawal penalties. Interest is usually taxed, and a minimum deposit
-          is required.
-        </div>
-        <div className="my-4 font-bold">M = P + ((P x r x t)/100)</div>
-        <div>
-          The formula M represents the total amount you'll have in the end,
-          where: P is the initial deposit amount. r is the annual interest rate.
-          t is the number of years the money is deposited or invested.
+          <AddCategory />
         </div>
       </div>
     </div>

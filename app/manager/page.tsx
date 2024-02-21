@@ -1,28 +1,12 @@
-import AddCategory from "@/components/MyFinanceComponents/AddCategory";
-import Items from "@/components/MyFinanceComponents/Items";
-import getCategories from "@/lib/getCategories";
+import Manager from "@/components/manager/manager";
+import React from "react";
 
-const Page = async () => {
-  const categories = await getCategories();
-
-  if (Array.isArray(categories)) {
-    if (categories.length === 0) {
-      return (
-        <div>
-          No categories found
-          <div>
-            <AddCategory />
-          </div>
-        </div>
-      );
-    }
-  }
-
+function Page() {
   return (
-    <div className="container mx-auto mt-6 ">
-      <Items categories={categories} />
+    <div>
+      <Manager />
     </div>
   );
-};
+}
 
 export default Page;

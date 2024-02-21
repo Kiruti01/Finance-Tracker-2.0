@@ -23,7 +23,15 @@ const StartCalculating = () => {
             router.push("/calculator");
           }}
         >
-          Finance Calculator
+          Calculator
+        </div>
+        <div
+          className=" w-[150px] text-center rounded-lg bg-white text-[#202020] px-3 py-2 font-semibold select-none"
+          onClick={() => {
+            router.push("/manager");
+          }}
+        >
+          My manager
         </div>
         {/* <div
           className="w-[150px] text-center bg-[#29abe2] rounded-lg px-4 py-2 text-[16px] font-semibold text-white select-none"
